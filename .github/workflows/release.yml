@@ -49,26 +49,25 @@ jobs:
       - name: Build LSP binary
         shell: bash
         run: |
-          cd lsp
           if [ "${{ matrix.target }}" = "aarch64-unknown-linux-gnu" ]; then
             export CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc
           fi
-          cargo build --release --target ${{ matrix.target }}
+          cargo build --release --target ${{ matrix.target }} -p tablefmt-lsp
 
       - name: Package binary (Unix)
         if: runner.os != 'Windows'
         run: |
-          cd lsp/target/${{ matrix.target }}/release
+          cd target/${{ matrix.target }}/release
           tar -czvf tablefmt-lsp-${{ matrix.target }}.tar.gz ${{ matrix.binary_name }}
-          mv tablefmt-lsp-${{ matrix.target }}.tar.gz ../../../../
+          mv tablefmt-lsp-${{ matrix.target }}.tar.gz ../../../
 
       - name: Package binary (Windows)
         if: runner.os == 'Windows'
         shell: bash
         run: |
-          cd lsp/target/${{ matrix.target }}/release
+          cd target/${{ matrix.target }}/release
           tar -czvf tablefmt-lsp-${{ matrix.target }}.tar.gz ${{ matrix.binary_name }}
-          mv tablefmt-lsp-${{ matrix.target }}.tar.gz ../../../../
+          mv tablefmt-lsp-${{ matrix.target }}.tar.gz ../../../
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
