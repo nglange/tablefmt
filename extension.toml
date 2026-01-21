@@ -1,0 +1,17 @@
+id = "tablefmt"
+name = "Markdown Table Formatter"
+description = "Formats markdown tables with aligned columns using Format Selection"
+version = "0.1.0"
+schema_version = 1
+authors = ["nicholas lange <nicholas@tensegrity.dev>"]
+repository = "https://github.com/nglange/tablefmt"
+
+[language_servers.tablefmt-lsp]
+name = "Markdown Table Formatter LSP"
+languages = ["Markdown"]
+
+[grammars]
+
+[download]
+host = "github.com"
+paths = ["nglange/tablefmt/**"]
