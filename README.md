@@ -38,6 +38,12 @@ Install from the Zed extension marketplace by searching for "tablefmt" or "Markd
 
 ## Building from Source
 
+### Prerequisites
+
+- [Rust](https://rustup.rs/) (via rustup)
+
+The required WASM target will be installed automatically via `rust-toolchain.toml`.
+
 ### Extension (WASM)
 
 ```bash
